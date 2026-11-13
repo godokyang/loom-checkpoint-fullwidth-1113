@@ -54,3 +54,5 @@ Check if the given string contains at least one [fullwidth](https://en.wikipedia
 Type: `string`
 
 The string to check.
+
+<!-- Loom checkpoint: external change observation -->
