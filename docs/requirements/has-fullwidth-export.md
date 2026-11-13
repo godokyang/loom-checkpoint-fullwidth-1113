@@ -10,15 +10,17 @@ work_items:
     deliverable: index.js 具名导出 hasFullwidth 及 index.d.ts 类型
     completion: 按码点遍历字符串，任一全角字符返回 true；空串与非字符串返回 false
     depends_on: []
+    status: done
+    self_check: hasFullwidth 按码点遍历（for...of），isFullWidth||isWide 与默认导出一致；空串与非字符串返回 false 不抛错（node 冒烟验证）；默认导出行为不变，原测试通过；tsd 类型检查通过；npm install && npm test（xo && ava && tsd）全部通过，临时 .npm-cache 已清理。
   - id: has-fullwidth-tests-readme
     title: 补充自动测试与 README 用法
     effort: 1
     expected_seconds: 600
     deliverable: test.js 新增 hasFullwidth 用例；README 增加用法示例
     completion: 覆盖全角/半角混合、空串、非字符串、增补平面字符，npm test 全部通过
-    depends_on: [has-fullwidth-impl]
+    depends_on:
+      - has-fullwidth-impl
 ---
-
 # 新增 hasFullwidth 字符串全角判断导出
 
 ## 目标

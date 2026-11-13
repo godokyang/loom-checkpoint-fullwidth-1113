@@ -10,3 +10,17 @@ export default function isFullwidthCodePoint(codePoint) {
 
 	return isFullWidth(codePoint) || isWide(codePoint);
 }
+
+export function hasFullwidth(string) {
+	if (typeof string !== 'string') {
+		return false;
+	}
+
+	for (const character of string) {
+		if (isFullWidth(character.codePointAt(0)) || isWide(character.codePointAt(0))) {
+			return true;
+		}
+	}
+
+	return false;
+}

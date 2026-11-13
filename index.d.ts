@@ -15,3 +15,24 @@ isFullwidthCodePoint('a'.codePointAt(0));
 ```
 */
 export default function isFullwidthCodePoint(codePoint: number): boolean;
+
+/**
+Check if the given string contains at least one [fullwidth](https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms) character.
+
+@param string - The string to check.
+
+@example
+```
+import {hasFullwidth} from 'is-fullwidth-code-point';
+
+hasFullwidth('あ');
+//=> true
+
+hasFullwidth('abc');
+//=> false
+
+hasFullwidth('');
+//=> false
+```
+*/
+export function hasFullwidth(string: string): boolean;
