@@ -35,6 +35,18 @@ hasFullwidth('');
 //=> false
 ```
 
+### Input and output
+
+| Input      | Return value | Notes                                             |
+| ---------- | ------------ | ------------------------------------------------- |
+| `'abc'`    | `false`      | Pure ASCII, no fullwidth characters               |
+| `'abあc'`  | `true`       | Contains the fullwidth character `あ`             |
+| `'中文'`   | `true`       | CJK characters are fullwidth                      |
+| `'𠀀'`    | `true`       | Supplementary-plane character (U+20000), fullwidth |
+| `''`       | `false`      | Empty string                                      |
+
+Each row is covered by an automated test case in `test.js`.
+
 ## API
 
 ### isFullwidthCodePoint(codePoint)

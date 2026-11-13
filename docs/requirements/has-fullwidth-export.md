@@ -5,23 +5,29 @@ title: 新增 hasFullwidth 字符串全角判断导出
 work_items:
   - id: has-fullwidth-impl
     title: 实现 hasFullwidth 导出与类型声明
-    effort: 2
-    expected_seconds: 900
     deliverable: index.js 具名导出 hasFullwidth 及 index.d.ts 类型
     completion: 按码点遍历字符串，任一全角字符返回 true；空串与非字符串返回 false
+    effort: 2
     depends_on: []
-    status: done
-    self_check: hasFullwidth 按码点遍历（for...of），isFullWidth||isWide 与默认导出一致；空串与非字符串返回 false 不抛错（node 冒烟验证）；默认导出行为不变，原测试通过；tsd 类型检查通过；npm install && npm test（xo && ava && tsd）全部通过，临时 .npm-cache 已清理。
+    expected_seconds: 900
   - id: has-fullwidth-tests-readme
     title: 补充自动测试与 README 用法
-    effort: 1
-    expected_seconds: 600
     deliverable: test.js 新增 hasFullwidth 用例；README 增加用法示例
     completion: 覆盖全角/半角混合、空串、非字符串、增补平面字符，npm test 全部通过
+    effort: 0.5
     depends_on:
       - has-fullwidth-impl
+    expected_seconds: 300
+  - id: has-fullwidth-readme-table
+    title: README 输入输出对照表与逐行测试覆盖
+    deliverable: readme.md hasFullwidth 输入输出对照表（纯 ASCII / 全角混合 / 增补平面三类）及 test.js 对应逐行用例
+    completion: 对照表每行示例真实反映实现行为且每行有对应 test.js 用例；npm install && npm test（xo && ava && tsd）全部通过；默认导出与 hasFullwidth 行为及类型声明不变
+    effort: 0.5
+    depends_on:
+      - has-fullwidth-tests-readme
+    expected_seconds: 300
     status: done
-    self_check: 用例覆盖全角（あ/谢/고）、半角、混合、空串、undefined/数字/null/对象等非字符串、增补平面字符 𠀀 及孤立代理对；npm install && npm test（xo && ava && tsd）3 个测试全部通过，原有 main 测试不回归。
+    self_check: README 对照表覆盖 'abc'(false)、'abあc'(true)、'中文'(true)、'𠀀'(true)、''(false)，每行经 node 实际运行验证与实现一致并有 test.js 逐行用例；npm install && npm test（xo && ava && tsd）复验 4 个测试全部通过；默认导出与 index.d.ts 类型声明未改动。用户已在主会话确认收口并合入。
 ---
 # 新增 hasFullwidth 字符串全角判断导出
 

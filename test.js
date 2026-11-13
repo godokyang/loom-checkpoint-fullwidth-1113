@@ -26,6 +26,15 @@ test('hasFullwidth', t => {
 	t.false(hasFullwidth({}));
 });
 
+test('hasFullwidth - readme input/output table', t => {
+	// Each row of the README table must match the real behavior.
+	t.false(hasFullwidth('abc')); // Pure ASCII
+	t.true(hasFullwidth('abあc')); // Mixed with a fullwidth character
+	t.true(hasFullwidth('中文')); // CJK characters are fullwidth
+	t.true(hasFullwidth('𠀀')); // Supplementary-plane character (U+20000)
+	t.false(hasFullwidth('')); // Empty string
+});
+
 test('hasFullwidth - surrogate pairs', t => {
 	// Lone half of a surrogate pair should not be detected as fullwidth.
 	t.false(hasFullwidth('\uD840'));
