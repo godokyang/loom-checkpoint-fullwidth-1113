@@ -8,6 +8,8 @@ shared_work:
     kind: planning
     depends_on: []
     expected_seconds: 600
+    status: done
+    self_check: '需求文档头部含 loom_kind: requirement 与唯一固定 id 38475e17-c06a-4a3b-8627-6840781c8080，正文含已确认行为、完成条件与工作事实；完整总结经用户页面确认（digest 831cc1b1，confirmed_at 2026-11-13T14:21:31Z，平台 co_creation.scope=confirmed）；版本计划覆盖该需求 scope/effort 与 planning/integration/validation 三项公共工作。'
   - id: supplement-integration
     title: 补充成果整合合入
     deliverable: readme.md 输入输出对照表、test.js 逐行用例与需求文档工作事实更新经同步提交合入版本分支
