@@ -10,6 +10,8 @@ work_items:
     effort: 2
     depends_on: []
     expected_seconds: 900
+    status: done
+    self_check: hasFullwidth 按码点遍历（for...of），isFullWidth||isWide 与默认导出一致；空串与非字符串返回 false 不抛错；默认导出行为不变；tsd 通过；npm test 全部通过。成果已合入版本分支（f944837），独立验收 a5517b18 对 c810df71 复跑 4 个测试全绿确认。
   - id: has-fullwidth-tests-readme
     title: 补充自动测试与 README 用法
     deliverable: test.js 新增 hasFullwidth 用例；README 增加用法示例
@@ -18,6 +20,8 @@ work_items:
     depends_on:
       - has-fullwidth-impl
     expected_seconds: 300
+    status: done
+    self_check: 用例覆盖全角（あ/谢/고）、半角、混合、空串、undefined/数字/null/对象等非字符串、增补平面字符 𠀀 及孤立代理对；npm test 全部通过，原有 main 测试不回归。成果已合入版本分支（90e0868），独立验收 a5517b18 对 c810df71 复跑确认。
   - id: has-fullwidth-readme-table
     title: README 输入输出对照表与逐行测试覆盖
     deliverable: readme.md hasFullwidth 输入输出对照表（纯 ASCII / 全角混合 / 增补平面三类）及 test.js 对应逐行用例
@@ -48,8 +52,8 @@ work_items:
 - README 补充 `hasFullwidth` 用法示例。
 
 ## 工作事实
-- 当前阶段：需求共创（已收口，待用户确认）
-- 已完成：目标与行为细节经两轮问答确认，见上文"已确认行为"
+- 当前阶段：已完成并经版本独立验收（a5517b18 pass，绑定 c810df71）
+- 已完成：hasFullwidth 导出与类型声明、自动测试、README 用法与输入输出对照表（逐行测试覆盖）；完整总结经用户确认（digest 831cc1b1）
 - 阻碍：无
-- 剩余工作：用户确认后分派实现
-- 事实来源：用户 2026-11-13 问答答复；仓库现状 is-fullwidth-code-point v5.1.0
+- 剩余工作：无
+- 事实来源：用户 2026-11-13 问答答复与确认；仓库 is-fullwidth-code-point v5.1.0 + 本需求提交链（f944837、90e0868、c810df71）
