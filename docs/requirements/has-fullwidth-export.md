@@ -20,6 +20,8 @@ work_items:
     completion: 覆盖全角/半角混合、空串、非字符串、增补平面字符，npm test 全部通过
     depends_on:
       - has-fullwidth-impl
+    status: done
+    self_check: 用例覆盖全角（あ/谢/고）、半角、混合、空串、undefined/数字/null/对象等非字符串、增补平面字符 𠀀 及孤立代理对；npm install && npm test（xo && ava && tsd）3 个测试全部通过，原有 main 测试不回归。
 ---
 # 新增 hasFullwidth 字符串全角判断导出
 
